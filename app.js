@@ -1,6 +1,8 @@
-let kittens = []
-let mood = "Confused"
+let kittens = [];
+let mood = ""
+let affection = 5
 let currentKitten = {}
+
 loadKittens()
 /**
  * Called when submitting the new Kitten Form
@@ -18,7 +20,11 @@ function addKitten(event) {
   currentKitten = kittens.find(kitten => kitten.name == kittenName)
 
   if(!currentKitten) {
-    currentKitten = {name: kittenName, mood: mood, affection: 0, id: generateId()}
+    currentKitten = {
+    name: kittenName,
+    mood: "Tolerant",
+    affection: 0,
+    id: generateId()}
     kittens.push(currentKitten)
     saveKittens()
     drawKittens()
@@ -122,15 +128,17 @@ function removeKitten(kittens, id){
  * remember to save this change
 */
 function clearKittens(){
-  window.localStorage.clear()
+  kittens = [];
   
+  document.getElementById("releaseKittens").style.visibility='hidden';
+  saveKittens();
+  drawKittens();
   let template = ""
   
     template += `<div id="kittens" class="d-flex align-items-center flex-wrap">
       Oh no! You don't have any kittens. Please fill out a name above to adopt one now!
     </div>
     `
-  document.getElementById("releaseKittens").style.visibility='hidden';
   document.getElementById("kittens").innerHTML = template
 }
 
