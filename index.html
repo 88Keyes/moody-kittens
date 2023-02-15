@@ -12,6 +12,8 @@
 </head>
 
 <body>
+
+
   <header class="bg-dark d-flex align-items-center p-1 space-between">
     <img src="moody-logo.png" height="60" alt="Moody Kittens">
     <form class="" onsubmit="addKitten(event)">
@@ -23,6 +25,8 @@
       </div>
     </form>
   </header>
+
+
   <main class="container">
     <div id="welcome" class="d-flex justify-content-center">
       <div class="card p-2 text-center w-50">
@@ -38,9 +42,12 @@
     </div>
     <div class="p-2">
 
+
       <div id="kittens" class="d-flex align-items-center flex-wrap">
+        
+
       </div>
-      <button onclick="clearKittens()" id="releaseKittens">Release ALL Kittens</button>
+      <button onclick="clearKittens()" id="releaseKittens" class="hidden .btn-special:after mt-3">Release ALL Kittens</button>
 
 
   </main>
@@ -52,3 +59,4 @@
 </body>
 
 </html>
+

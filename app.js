@@ -1,7 +1,7 @@
 let kittens = [];
 let mood = ""
 let affection = 5
-let currentKitten = {}
+let kitten = {}
 
 loadKittens()
 /**
@@ -17,17 +17,21 @@ function addKitten(event) {
 
   let kittenName = form.name.value
 
-  currentKitten = kittens.find(kitten => kitten.name == kittenName)
+  kitten = kittens.find(kitten => kitten.name == kittenName)
 
-  if(!currentKitten) {
-    currentKitten = {
+  if(kitten){
+    alert("Please choose a unique name for your kitten")
+  }
+
+  if(!kitten) {
+    kitten = {
     name: kittenName,
     mood: "Tolerant",
-    affection: 0,
+    affection: 5,
     id: generateId()}
-    kittens.push(currentKitten)
+
+    kittens.push(kitten)
     saveKittens()
-    drawKittens()
     
   }
 
@@ -41,6 +45,7 @@ function addKitten(event) {
  */
 function saveKittens() {
   window.localStorage.setItem("kittens", JSON.stringify(kittens))
+  drawKittens()
 }
 
 /**
@@ -63,11 +68,12 @@ function drawKittens() {
 
   kittens.forEach(kittens => {
     template += `<div id="kittens" class="d-flex align-items-center flex-wrap">
-      <pre>
-       <span>Name: ${kittens.name}</span>
-       <span>Mood: ${kittens.mood}</span>
-       <span>Affection: ${kittens.affection} </span>
-       <button id="deleteButton" onclick="removeKitten()">Release this Kitten</button>
+      <pre class = "card container shadow">
+        <img src="cat.png" alt="brown cartoon cat sitting in a box" height = 200px>
+        <span>Name: ${kittens.name}</span>
+        <span>Mood: ${kittens.mood}</span>
+        <span>Affection: ${kittens.affection} </span>
+        <button onclick="removeKitten(${kittens.id})">Release this Kitten</button>
       </pre>
     </div>
     `
@@ -82,7 +88,9 @@ function drawKittens() {
  * @param {string} id 
  * @return {Kitten}
  */
+
 function findKittenById(id) {
+  return kittens.find(kitten => kitten.id == id);
 }
 
 
@@ -111,15 +119,20 @@ function catnip(id) {
  * @param {Kitten} kitten 
 */
 function setKittenMood(kitten) {
+  
 }
 
-function removeKitten(kittens, id){
-  const kittenIndex = kittens.findIndex((obj) => obj.id == id);
-  if(kittenIndex > -1){
-    kittens.splice(kittenIndex, 1);
+function removeKitten(id){
+  //Need to compare kitten id and button id, remove kitten with matching id
+
+  let index = kittens.findIndex(kittens => kittens.id == id)
+  if(index == -1){
+    throw new Error("Oops")
   }
+
+  //let x = kittens.indexOf(findKittenById(kitten.id))
+  kittens.splice(index, 1)
   saveKittens()
-  loadKittens()
   
 }
 
@@ -132,7 +145,7 @@ function clearKittens(){
   
   document.getElementById("releaseKittens").style.visibility='hidden';
   saveKittens();
-  drawKittens();
+  
   let template = ""
   
     template += `<div id="kittens" class="d-flex align-items-center flex-wrap">
@@ -150,7 +163,7 @@ function getStarted() {
   document.getElementById("welcome").remove();
   console.log('This is your life meow')
   drawKittens()
-  document.getElementById("releaseKittens").style.visibility='visible';
+  document.getElementById("releaseKittens").classList.remove("hidden");
 
 }
 
