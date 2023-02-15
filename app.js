@@ -15,7 +15,6 @@ loadKittens()
 function addKitten(event) {
   event.preventDefault()
   let form = event.target
-
   let kittenName = form.name.value
 
   kitten = kittens.find(kitten => kitten.name == kittenName)
@@ -107,6 +106,18 @@ function findKittenById(id) {
  * @param {string} id 
 */
 function pet(id) {
+  let currentKitten = findKittenById(id)
+  if(currentKitten.affection < 10 && Math.random() >.5){
+    currentKitten.affection++
+  }else{
+    currentKitten.affection--}
+
+  if(currentKitten.affection === 0){
+    removeKitten(id);
+    alert("Oh no! Your kitten's affection score reached 0 and they ran away!")
+  }
+  setKittenMood(currentKitten)
+  saveKittens()
 }
 
 /**
@@ -116,6 +127,10 @@ function pet(id) {
  * @param {string} id
 */
 function catnip(id) {
+  let currentKitten = findKittenById(id)
+    currentKitten.mood = "Tolerant";
+    currentKitten.affection = 5;
+  saveKittens()
 }
 
 /**
@@ -123,23 +138,31 @@ function catnip(id) {
  * @param {Kitten} kitten 
 */
 function setKittenMood(kitten) {
-  //if(affection 
-  
+  console.log(kitten)
+  if(kitten.affection <= 10 && kitten.affection >= 7){
+    kitten.mood = "Pleased"
+  }
+  if(kitten.affection <=6 && kitten.affection >= 4){
+    kitten.mood = "Tolerant"
+  }
+  if(kitten.affection <=3 && kitten.affection >=1){
+    kitten.mood = "Filled with Rage"
+  }
+
+  console.log(kitten.name + " is " + kitten.mood)
+
+  saveKittens()
 }
 
 function removeKitten(id){
-  //Need to compare kitten id and button id, remove kitten with matching id
-
   let index = kittens.findIndex(kittens => kittens.id == id)
   if(index == -1){
     throw new Error("Oops")
   }
 
   kittens.splice(index, 1)
-  
-  
+   
   saveKittens()
-  
 }
 
 /**
@@ -153,11 +176,9 @@ function clearKittens(){
   saveKittens();
   
   let template = ""
-  
     template += `<div id="kittens" class="d-flex align-items-center flex-wrap">
       Oh no! You don't have any kittens. Please fill out a name above to adopt one now!
-    </div>
-    `
+    </div> `
   document.getElementById("kittens").innerHTML = template
 }
 
