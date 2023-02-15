@@ -73,7 +73,7 @@ function drawKittens() {
         <span>Name: ${kittens.name}</span>
         <span>Mood: ${kittens.mood}</span>
         <span>Affection: ${kittens.affection} </span>
-        <button onclick="removeKitten(${kittens.id})">Release this Kitten</button>
+        <button onclick="removeKitten('${kittens.id}')">Release this Kitten</button>
       </pre>
     </div>
     `
