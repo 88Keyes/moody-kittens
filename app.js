@@ -4,6 +4,7 @@ let affection = 5
 let kitten = {}
 
 loadKittens()
+
 /**
  * Called when submitting the new Kitten Form
  * This method will pull data from the form
@@ -68,12 +69,15 @@ function drawKittens() {
 
   kittens.forEach(kittens => {
     template += `<div id="kittens" class="d-flex align-items-center flex-wrap">
-      <pre class = "card container shadow">
+      <pre class = "card container shadow" style="font-family:'Gloria Hallelujah', cursive">
         <img src="cat.png" alt="brown cartoon cat sitting in a box" height = 200px>
         <span>Name: ${kittens.name}</span>
         <span>Mood: ${kittens.mood}</span>
         <span>Affection: ${kittens.affection} </span>
-        <button onclick="removeKitten('${kittens.id}')">Release this Kitten</button>
+        <button onclick="pet('${kittens.id}')" style="font-family:'Gloria Hallelujah', cursive">Pet</button>
+        <button onclick="catnip('${kittens.id}')" style="font-family:'Gloria Hallelujah', cursive">Give catnip</button>
+        <button onclick="removeKitten('${kittens.id}')" style="font-family:'Gloria Hallelujah', cursive">Release this Kitten</button>
+
       </pre>
     </div>
     `
@@ -119,6 +123,7 @@ function catnip(id) {
  * @param {Kitten} kitten 
 */
 function setKittenMood(kitten) {
+  //if(affection 
   
 }
 
@@ -130,8 +135,9 @@ function removeKitten(id){
     throw new Error("Oops")
   }
 
-  //let x = kittens.indexOf(findKittenById(kitten.id))
   kittens.splice(index, 1)
+  
+  
   saveKittens()
   
 }

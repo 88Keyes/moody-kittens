@@ -7,7 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Moody Kittens | CodeWorks</title>
   <link rel="shortcut icon" href="moody-logo.png" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">  
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,7 +20,7 @@
     <img src="moody-logo.png" height="60" alt="Moody Kittens">
     <form class="" onsubmit="addKitten(event)">
       <div class="d-flex">
-        <input placeholder="Name" type="text" name="name" />
+        <input placeholder="Name" type="text" name="name" style="font-family:'Gloria Hallelujah', cursive"/>
         <button class="btn-special" type="submit">
           /ᐠ｡ꞈ｡ᐟ\
         </button>
@@ -36,7 +38,7 @@
           <p>This is our world; you're just living in it. You may begin your servitude at this time.</p>
           <small>Proceed with caution</small>
           <br>
-          <button onclick="getStarted()">I'm Ready</button>
+          <button onclick="getStarted()" style="font-family:'Gloria Hallelujah', cursive">I'm Ready</button>
         </div>
       </div>
     </div>
@@ -47,7 +49,7 @@
         
 
       </div>
-      <button onclick="clearKittens()" id="releaseKittens" class="hidden .btn-special:after mt-3">Release ALL Kittens</button>
+      <button onclick="clearKittens()" id="releaseKittens" class="hidden .btn-special:after mt-3" style="font-family:'Gloria Hallelujah', cursive">Release ALL Kittens</button>
 
 
   </main>

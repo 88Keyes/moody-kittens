@@ -22,8 +22,7 @@ body{
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Catamaran', sans-serif;
-}
+  font-family: 'Indie Flower', cursive;}
 
 header{
   height: 80px;
@@ -105,6 +104,7 @@ button.btn-special:after{
   margin-top: 5px;
   font-size: 8pt;
   color: var(--primary);
+  font-family: 'Indie Flower', cursive;
 }
 button.btn-special:focus{
   outline: none;

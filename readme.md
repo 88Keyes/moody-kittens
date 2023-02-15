@@ -22,12 +22,12 @@ x  - Reset the form
 x  - Save the kittens list
 x  - Draw the kittens list
 1. Handle Page Refresh
-  - Load the kittens list
-  - Draw the kittens list
+x  - Load the kittens list
+x  - Draw the kittens list
 
 ## Requirements: 
-- [ ] Users must have a form where they enter in at minimum the name of a kitten 
-- [ ] A Kitten's name and mood must be visible for the user 
+- [x] Users must have a form where they enter in at minimum the name of a kitten 
+- [x] A Kitten's name and mood must be visible for the user 
 - [ ] A custom Google Font must be added 
 - [ ] A Kitten's mood must affect visually the appearance of the kitten 
 - [ ] Add Kitten form clears when submitted 
