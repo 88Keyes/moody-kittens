@@ -128,23 +128,23 @@ button.btn-special:hover{
 }
 
 
-.kitten img{
+.kitten{
   filter: drop-shadow(2px 4px 6px #1b1b1b);
   transition: all .35s ease;
 }
-.kitten.happy img{
+.kitten.Happy{
   filter: drop-shadow(2px 4px 6px #00ffb3);
 }
-.kitten.tolerant img{
+.kitten.Tolerant{
   filter: drop-shadow(2px 4px 6px #646464);
 }
-.kitten.angry img{
+.kitten.Angry{
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(1);
 }
-.kitten.gone img{
+.kitten.Gone{
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(0);
 }
-.kitten.gone{
+.kitten.gone-2{
   color: var(--danger);
   pointer-events: none;
 }
@@ -172,6 +172,13 @@ button.btn-special:hover{
 .btn-cancel:hover{
   background-color: #fa4141;
   border-color: #ff3737;
+}
+
+.center-kitten{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .text-danger{

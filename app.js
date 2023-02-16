@@ -3,7 +3,6 @@ let mood = ""
 let affection = 5
 let kitten = {}
 
-loadKittens()
 
 /**
  * Called when submitting the new Kitten Form
@@ -28,7 +27,8 @@ function addKitten(event) {
     name: kittenName,
     mood: "Tolerant",
     affection: 5,
-    id: generateId()}
+    id: generateId()
+    }
 
     kittens.push(kitten)
     saveKittens()
@@ -68,21 +68,24 @@ function drawKittens() {
 
   kittens.forEach(kittens => {
     template += `<div id="kittens" class="d-flex align-items-center flex-wrap">
-      <pre class = "card container shadow" style="font-family:'Gloria Hallelujah', cursive">
-        <img src="cat.png" alt="brown cartoon cat sitting in a box" height = 200px>
-        <span>Name: ${kittens.name}</span>
-        <span>Mood: ${kittens.mood}</span>
-        <span>Affection: ${kittens.affection} </span>
+      <div class = "card shadow m-1" style="font-family:'Gloria Hallelujah', cursive">
+        <img class="center-kitten kitten ${kittens.mood}" src="cat.png" alt="brown cartoon cat sitting in a box" height = 200px id = "defaultKitten">
+        <div class = "d-flex justify-content-center">Name: ${kittens.name}</div>
+        <div class = "d-flex justify-content-center">Mood: ${kittens.mood}</div>
+        <div class = "d-flex justify-content-center">Affection: ${kittens.affection} </div>
         <button onclick="pet('${kittens.id}')" style="font-family:'Gloria Hallelujah', cursive">Pet</button>
         <button onclick="catnip('${kittens.id}')" style="font-family:'Gloria Hallelujah', cursive">Give catnip</button>
         <button onclick="removeKitten('${kittens.id}')" style="font-family:'Gloria Hallelujah', cursive">Release this Kitten</button>
 
-      </pre>
+      </div>
     </div>
     `
 })
 
   document.getElementById("kittens").innerHTML = template
+  //kittens.forEach(kittens => {
+    
+  //})
 }
 
 
@@ -138,17 +141,25 @@ function catnip(id) {
  * @param {Kitten} kitten 
 */
 function setKittenMood(kitten) {
-  console.log(kitten)
   if(kitten.affection <= 10 && kitten.affection >= 7){
-    kitten.mood = "Pleased"
+    kitten.mood = "Happy"
   }
+
   if(kitten.affection <=6 && kitten.affection >= 4){
     kitten.mood = "Tolerant"
   }
+
   if(kitten.affection <=3 && kitten.affection >=1){
-    kitten.mood = "Filled with Rage"
+    kitten.mood = "Angry"
   }
 
+  if(kitten.affection == 0){
+    kitten.mood = "Gone"
+  }
+  
+  document.getElementById("kittens").classList.add(kitten.mood)
+
+  console.log(document.getElementById("defaultKitten").classList)
   console.log(kitten.name + " is " + kitten.mood)
 
   saveKittens()
