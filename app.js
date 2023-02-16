@@ -83,9 +83,15 @@ function drawKittens() {
 })
 
   document.getElementById("kittens").innerHTML = template
-  //kittens.forEach(kittens => {
-    
-  //})
+
+  if(kittens.length == 0){
+    let template = ""
+    template += `<div id="kittens" class="d-flex align-items-center flex-wrap">
+      Oh no! You don't have any kittens. Please fill out a name above to adopt one now!
+    </div> `
+    document.getElementById("kittens").innerHTML = template
+    document.getElementById("releaseKittens").style.visibility='hidden';
+  }
 }
 
 
@@ -202,6 +208,7 @@ function getStarted() {
   console.log('This is your life meow')
   drawKittens()
   document.getElementById("releaseKittens").classList.remove("hidden");
+  
 
 }
 
